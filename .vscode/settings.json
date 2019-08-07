@@ -1,8 +1,7 @@
 {
     "files.associations": {
         "list": "cpp",
-        "shortest_path_computer": "cpp"
+        "queue": "cpp"
     },
-    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     "cmake.configureOnOpen": true
 }
