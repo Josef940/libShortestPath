@@ -1,3 +1,6 @@
+#ifndef GRAPHTESTS_HPP
+#define GRAPHTESTS_HPP
+
 #include <gtest/gtest.h>
 #include "../src/ShortestPath.hpp"
 class GraphTests : public::testing::Test{
@@ -31,3 +34,5 @@ class GraphTests : public::testing::Test{
             delete graph;
         }
 };
+
+#endif

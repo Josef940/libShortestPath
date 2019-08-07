@@ -1,4 +1,3 @@
-#include <list>
 #include "./entities/graph_entities/Graph.hpp"
 using namespace std;
 

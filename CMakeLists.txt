@@ -16,7 +16,7 @@ add_library(${THIS_PROJECT} STATIC ${source_files})
 #Setup tests----
 add_subdirectory(googletest)
 set(TESTS_NAME libShortestPath_Tests)
-file(GLOB_RECURSE test_files "./tests/*.cpp","./tests/*.hpp")
+file(GLOB_RECURSE test_files "./tests/*.cpp", "./tests/*.hpp")
 add_executable(${TESTS_NAME} ${test_files})
 target_link_libraries(${TESTS_NAME} PUBLIC
     gtest_main
