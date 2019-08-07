@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.15)
 
-set(THIS_PROJECT libShortestPath)
+set(THIS_PROJECT ShortestPath)
 project(${THIS_PROJECT})
 
 set(CMAKE_CXX_STANDARD 11)
@@ -15,7 +15,7 @@ add_library(${THIS_PROJECT} STATIC ${source_files})
 
 #Setup tests----
 add_subdirectory(googletest)
-set(TESTS_NAME libShortestPath_Tests)
+set(TESTS_NAME ShortestPath_Tests)
 file(GLOB_RECURSE test_files "./tests/*.cpp", "./tests/*.hpp")
 add_executable(${TESTS_NAME} ${test_files})
 target_link_libraries(${TESTS_NAME} PUBLIC

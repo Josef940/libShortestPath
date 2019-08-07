@@ -19,9 +19,6 @@ class Vertex{
             _userObject = userObject;
         }
         void addNeighbourEdge(Edge* edge);
-        //bool operator<(Vertex* otherVertex);
-        //bool operator<(Vertex& otherVertex);
-        //bool operator<(Vertex otherVertex);
         
         void* userObject(){ return _userObject; }
         unsigned long long ID(){ return _ID; }

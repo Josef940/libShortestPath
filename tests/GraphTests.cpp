@@ -47,6 +47,7 @@ TEST_F(GraphTests, return_42_after_distanceFromStart_is_set_to_42){
     vertex1->setDistanceFromStart(42);
     ASSERT_EQ(vertex1->distanceFromStart(), 42);
 }
+
 TEST_F(GraphTests, vertex_priority_queue_prioritizes_correctly){
     Vertex* vertex3 = new Vertex(NULL, 4);
     Vertex* vertex4 = new Vertex(NULL, 3);
