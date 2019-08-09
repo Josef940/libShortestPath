@@ -3,17 +3,17 @@
 
 #include <list>
 #include <queue>
-#include "Vertex.hpp"
-#include "Edge.hpp"
+#include "./entities/graph_entities/Vertex.hpp"
+#include "./entities/graph_entities/Edge.hpp"
 class Graph{
     protected:
-        list<Edge*> _edges;
         list<Vertex*> _vertices;
+        list<Edge*> _edges;
     public:
         Graph(){}
+        ~Graph();
         Vertex* addVertex(void* userObject, unsigned long long vertexID);
         Edge* addEdge(Vertex* vertex1, Vertex* vertex2, double weight);
-
 
         list<Vertex*> computeShortestPath(Vertex* startVertex, Vertex* targetVertex);
         void cleanup();

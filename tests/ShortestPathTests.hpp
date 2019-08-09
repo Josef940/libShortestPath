@@ -2,7 +2,7 @@
 #define SHORTESTPATHTESTS_HPP
 
 #include <gtest/gtest.h>
-#include "../src/ShortestPath.hpp"
+#include "../src/Graph.hpp"
 class ShortestPathTests : public ::testing::Test{
     // Graph designed as https://graphonline.ru/en/?graph=PNUKHFYvJrnwKZST
     public:

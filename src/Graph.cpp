@@ -1,10 +1,20 @@
 #include "Graph.hpp"
 #include <queue>
+
+Graph::~Graph(){
+    for(Vertex* vertex : _vertices){
+        delete vertex;
+    }
+    for(Edge* edge : _edges){
+        delete edge;
+    }
+}
+
 Vertex* Graph::addVertex(void* userObject, unsigned long long vertexID){
         Vertex* vertex = new Vertex(userObject, vertexID);
         _vertices.push_back(vertex);
         return vertex;
-};
+}
 
 Edge* Graph::addEdge(Vertex* vertex1, Vertex* vertex2, double weight){
     Edge* edge = new Edge(vertex1, vertex2, weight);

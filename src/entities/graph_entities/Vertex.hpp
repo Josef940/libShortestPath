@@ -11,13 +11,11 @@ class Vertex{
         void* _userObject;
         const unsigned long long _ID;
         list<Edge*> _edgesToNeighbours;
-
         double _distanceFromStart = numeric_limits<double>::max(); // I.e. tentative distance.
         Vertex* _previousVertex = NULL; // Previous Vertex in the shortest path to this Vertex.
     public:
-        Vertex(void* userObject, unsigned long long ID):_ID(ID){
-            _userObject = userObject;
-        }
+        Vertex(void* userObject, unsigned long long ID): _ID(ID), _userObject(userObject)
+        {}
         void addNeighbourEdge(Edge* edge);
         
         void* userObject(){ return _userObject; }

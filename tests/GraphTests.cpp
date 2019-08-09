@@ -49,10 +49,10 @@ TEST_F(GraphTests, return_42_after_distanceFromStart_is_set_to_42){
 }
 
 TEST_F(GraphTests, vertex_priority_queue_prioritizes_correctly){
-    Vertex* vertex3 = new Vertex(NULL, 4);
-    Vertex* vertex4 = new Vertex(NULL, 3);
-    Vertex* vertex5 = new Vertex(NULL, 6);
-    Vertex* vertex6 = new Vertex(NULL, 5);
+    Vertex* vertex3 = graph->addVertex(NULL,4);
+    Vertex* vertex4 = graph->addVertex(NULL,3);
+    Vertex* vertex5 = graph->addVertex(NULL,6);
+    Vertex* vertex6 = graph->addVertex(NULL,5);
     Graph::vertex_priority_queue priorityQ;
     vertex1->setDistanceFromStart(0);
     vertex2->setDistanceFromStart(4);

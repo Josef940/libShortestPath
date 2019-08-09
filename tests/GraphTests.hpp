@@ -2,7 +2,7 @@
 #define GRAPHTESTS_HPP
 
 #include <gtest/gtest.h>
-#include "../src/ShortestPath.hpp"
+#include "../src/Graph.hpp"
 class GraphTests : public::testing::Test{
     
     public:
