@@ -10,6 +10,12 @@ Graph::~Graph(){
     }
 }
 
+void Graph::cleanup(){
+    for(Vertex* vertex : _vertices){
+        vertex->resetVertex();
+    }
+}
+
 Vertex* Graph::addVertex(void* userObject, unsigned long long vertexID){
         Vertex* vertex = new Vertex(userObject, vertexID);
         _vertices.push_back(vertex);
@@ -24,7 +30,7 @@ Edge* Graph::addEdge(Vertex* vertex1, Vertex* vertex2, double weight){
 }
 
 list<Vertex*> Graph::computeShortestPath(Vertex* startVertex, Vertex* targetVertex){
-    list<Vertex*> shortestPath; //temp, delete!!
+    
     vertex_priority_queue queue;
     startVertex->setDistanceFromStart(0);
     queue.push(startVertex);
@@ -33,10 +39,14 @@ list<Vertex*> Graph::computeShortestPath(Vertex* startVertex, Vertex* targetVert
         Vertex* vertexFromQueue = queue.top();
         queue.pop();
         if(vertexFromQueue == targetVertex){
-            return extractShortestPath(vertexFromQueue);
+            list<Vertex*> shortestPath = extractShortestPath(targetVertex);
+            cleanup();
+            return shortestPath;
         }
         relax(vertexFromQueue, queue);
     }
+    // If no path found, return empty list.
+    list<Vertex*> shortestPath;
     return shortestPath;
 }
 

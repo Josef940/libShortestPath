@@ -1,4 +1,5 @@
 #include "ShortestPathTests.hpp"
+#include "../src/entities/graph_entities/Vertex.hpp"
 TEST_F(ShortestPathTests, computeShortestPath_should_return_correct_path_v0_to_v9){
     // Shortest path should be 0->1->5->4->9
     list<Vertex*> shortestPath = graph->computeShortestPath(vertex0, vertex9);
@@ -32,3 +33,18 @@ TEST_F(ShortestPathTests, computeShortestPath_should_return_correct_path_v2_to_v
     it++;
     ASSERT_EQ(*it, vertex1);
 }
+
+TEST_F(ShortestPathTests, vertices_distances_resets){
+    graph->computeShortestPath(vertex2, vertex3);
+    for(Vertex* vertex : graph->vertices()){
+        ASSERT_EQ(vertex->distanceFromStart(), numeric_limits<double>::max());
+    }
+}
+
+TEST_F(ShortestPathTests, vertices_previous_resets){
+    graph->computeShortestPath(vertex2, vertex3);
+    for(Vertex* vertex : graph->vertices()){
+        ASSERT_EQ(vertex->previousVertex(), nullptr);
+    }
+}
+

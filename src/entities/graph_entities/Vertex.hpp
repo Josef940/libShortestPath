@@ -7,7 +7,7 @@
 using namespace std;
 
 class Vertex{
-    protected:
+    protected:;
         void* _userObject;
         const unsigned long long _ID;
         list<Edge*> _edgesToNeighbours;
@@ -16,6 +16,7 @@ class Vertex{
     public:
         Vertex(void* userObject, unsigned long long ID): _ID(ID), _userObject(userObject)
         {}
+        void resetVertex();
         void addNeighbourEdge(Edge* edge);
         
         void* userObject(){ return _userObject; }
