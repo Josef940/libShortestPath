@@ -30,6 +30,7 @@ Edge* Graph::addEdge(Vertex* vertex1, Vertex* vertex2, double weight){
 }
 
 list<Vertex*> Graph::computeShortestPath(Vertex* startVertex, Vertex* targetVertex){
+    cleanup();
     
     vertex_priority_queue queue;
     startVertex->setDistanceFromStart(0);
@@ -38,9 +39,9 @@ list<Vertex*> Graph::computeShortestPath(Vertex* startVertex, Vertex* targetVert
     while(!queue.empty()){
         Vertex* vertexFromQueue = queue.top();
         queue.pop();
+        vertexFromQueue->setVisited(true);
         if(vertexFromQueue == targetVertex){
             list<Vertex*> shortestPath = extractShortestPath(targetVertex);
-            cleanup();
             return shortestPath;
         }
         relax(vertexFromQueue, queue);

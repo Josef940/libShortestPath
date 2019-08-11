@@ -13,7 +13,12 @@ void Vertex::setPreviousVertex(Vertex* previousVertex){
     _previousVertex = previousVertex;
 }
 
+void Vertex::setVisited(bool visited){
+    _visited = visited;
+}
+
 void Vertex::resetVertex(){
     setDistanceFromStart(numeric_limits<double>::max());
     setPreviousVertex(NULL);
+    setVisited(false);
 }

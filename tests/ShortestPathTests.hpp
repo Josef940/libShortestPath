@@ -19,8 +19,12 @@ class ShortestPathTests : public ::testing::Test{
         Vertex* vertex9;
         Vertex* vertex10;
     protected:
-        void SetUp() override{
+        virtual void createGraph(){
             graph = new Graph();
+        }
+        virtual void castGraph(){}
+        void SetUp() override{
+            createGraph();
             vertex0 = graph->addVertex(NULL, 0);
             vertex1 = graph->addVertex(NULL, 1);
             vertex2 = graph->addVertex(NULL, 2);
@@ -57,8 +61,10 @@ class ShortestPathTests : public ::testing::Test{
             graph->addEdge(vertex4, vertex3, 2);
             graph->addEdge(vertex4, vertex9, 4);
             graph->addEdge(vertex9, vertex4, 4);
+            castGraph();
         }
         void TearDown() override{
+            delete graph;
         }
 };
 
