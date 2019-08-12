@@ -2,7 +2,8 @@
     "files.associations": {
         "list": "cpp",
         "queue": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iterator": "cpp"
     },
     "cmake.configureOnOpen": true
 }

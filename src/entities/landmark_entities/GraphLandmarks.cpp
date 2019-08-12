@@ -1,6 +1,9 @@
 #include "GraphLandmarks.hpp"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <iterator>
+#include <cstdlib>
 
 void GraphLandmarks::generateLandmarks(){
     list<Vertex*> selectedVertexLandmarks = selectLandmarks();
@@ -28,23 +31,34 @@ list<Vertex*> GraphLandmarks::selectLandmarks(){ //TEMP, select randomly
     /*Vertex* unreachableVertex = new Vertex(NULL,numeric_limits<unsigned long long>::max());
     computeShortestPath(randomVertex(), unreachableVertex);*/
     for(int i = 1; i <= amountOfLandmarks(); i++){
-        selectedLandmarks.push_back( *(vertices().begin()) );
+        selectedLandmarks.push_back(randomVertex(selectedLandmarks));
     }
     return selectedLandmarks;
 }
 
-Vertex* GraphLandmarks::randomVertex(){
-    auto begin = vertices().begin();
-    auto end = vertices().end();
-    const unsigned long long n = distance(begin,end);
-    auto max = RAND_MAX;
-    const unsigned long long divisor = (max + 1) / n;
-    unsigned long long k;
+/*
+*  Not uniformly random picking, but the precision does not matter at all in this case.
+*/
+Vertex* GraphLandmarks::randomVertex(list<Vertex*> alreadySelected){
+    auto vertices_size = vertices().size();
+    if(alreadySelected.size() >= vertices_size){
+        throw "Cannot find random vertex from the vertices list! All vertices are already selected.";
+    }else if(vertices_size == 0){
+        throw "No vertices to pick a random vertex from.";
+    }
+
+    Vertex* selectedVertex = *(vertices().begin());
+    auto begin_alreadySelected = alreadySelected.begin();
+    auto end_alreadySelected = alreadySelected.end();
     do{
-        k = rand()/divisor;
-    } while(k>=n);
-    advance(begin,k);
-    return *begin;
+        list<Vertex*>::iterator vertices_iterator = _vertices.begin();
+
+        int random_num = rand() % vertices_size;
+        advance(vertices_iterator, random_num);
+        selectedVertex = *vertices_iterator;
+    }while(find(begin_alreadySelected, end_alreadySelected, selectedVertex) != end_alreadySelected);
+
+    return selectedVertex;
 }
 
 void GraphLandmarks::addLandmark(Vertex* landmarkVertex){

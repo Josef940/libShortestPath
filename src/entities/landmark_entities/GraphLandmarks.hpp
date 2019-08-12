@@ -11,7 +11,7 @@ class GraphLandmarks : public Graph{
         list<Landmark*> _landmarks;
         list<Vertex*> selectLandmarks();
         void addLandmark(Vertex* landmark);
-        Vertex* randomVertex();
+        Vertex* randomVertex(list<Vertex*> alreadySelected);
     public:
         void createLandmarksFile();
         void generateLandmarks();
