@@ -25,7 +25,7 @@ Vertex* Graph::addVertex(void* userObject, unsigned long long vertexID){
 Edge* Graph::addEdge(Vertex* vertex1, Vertex* vertex2, double weight){
     Edge* edge = new Edge(vertex1, vertex2, weight);
     _edges.push_back(edge);
-    vertex1->addNeighbourEdge(edge);
+    vertex1->addEdgeFromVertex(edge);
     return edge;
 }
 
@@ -52,7 +52,7 @@ list<Vertex*> Graph::computeShortestPath(Vertex* startVertex, Vertex* targetVert
 }
 
 void Graph::relax(Vertex* vertex, vertex_priority_queue& priorityQueue){
-    for(Edge* edge : vertex->connectedEdges()){
+    for(Edge* edge : vertex->edgesFromVertex()){
         double newDistance = vertex->distanceFromStart() + edge->weight();
         Vertex* toVertex = edge->vertex2();
         if(newDistance < toVertex->distanceFromStart()){

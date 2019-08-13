@@ -1,8 +1,8 @@
 #include "Vertex.hpp"
 #include <iostream>
 
-void Vertex::addNeighbourEdge(Edge* edge){
-    _edgesToNeighbours.push_back(edge);
+void Vertex::addEdgeFromVertex(Edge* edge){
+    _edgesFromVertex.push_back(edge);
 }
 
 void Vertex::setDistanceFromStart(double newDistanceFromStart){

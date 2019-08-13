@@ -9,6 +9,7 @@ class GraphLandmarks : public Graph{
         string _fileName;
         const unsigned int _amountOfLandmarks;
         list<Landmark*> _landmarks;
+        list<Vertex*> selectLandmarksRandomly();
         list<Vertex*> selectLandmarks();
         void addLandmark(Vertex* landmark);
         Vertex* randomVertex(list<Vertex*> alreadySelected);

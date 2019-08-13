@@ -39,7 +39,7 @@ TEST_F(GraphTests, added_edge_returns_correct_weight){
 }
 
 TEST_F(GraphTests, neighbour_edge_added_to_vertex_1_when_added_to_graph){
-    Edge* connectedEdge = vertex1->connectedEdges().front();
+    Edge* connectedEdge = vertex1->edgesFromVertex().front();
     ASSERT_EQ(edge, connectedEdge);
 }
 

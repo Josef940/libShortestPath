@@ -6,7 +6,7 @@
 #include <cstdlib>
 
 void GraphLandmarks::generateLandmarks(){
-    list<Vertex*> selectedVertexLandmarks = selectLandmarks();
+    list<Vertex*> selectedVertexLandmarks = selectLandmarksRandomly();
     for(Vertex* vertexLandmark : selectedVertexLandmarks){
         addLandmark(vertexLandmark);
     }
@@ -26,7 +26,8 @@ void GraphLandmarks::createLandmarksFile(){
     file.close();
 }
 
-list<Vertex*> GraphLandmarks::selectLandmarks(){ //TEMP, select randomly
+
+list<Vertex*> GraphLandmarks::selectLandmarksRandomly(){ //TEMP, select randomly
     list<Vertex*> selectedLandmarks;
     /*Vertex* unreachableVertex = new Vertex(NULL,numeric_limits<unsigned long long>::max());
     computeShortestPath(randomVertex(), unreachableVertex);*/
@@ -47,11 +48,11 @@ Vertex* GraphLandmarks::randomVertex(list<Vertex*> alreadySelected){
         throw "No vertices to pick a random vertex from.";
     }
 
-    Vertex* selectedVertex = *(vertices().begin());
+    Vertex* selectedVertex;
     auto begin_alreadySelected = alreadySelected.begin();
     auto end_alreadySelected = alreadySelected.end();
     do{
-        list<Vertex*>::iterator vertices_iterator = _vertices.begin();
+        list<Vertex*>::iterator vertices_iterator = verticesBegin();
 
         int random_num = rand() % vertices_size;
         advance(vertices_iterator, random_num);

@@ -20,6 +20,10 @@ class Graph{
 
         list<Edge*> edges() { return _edges; };
         list<Vertex*> vertices(){ return _vertices; };
+        list<Edge*>::iterator edgesBegin() { return _edges.begin(); }
+        list<Vertex*>::iterator verticesBegin() { return _vertices.begin(); }
+        list<Edge*>::iterator edgesEnd() { return _edges.end(); }
+        list<Vertex*>::iterator verticesEnd() { return _vertices.end(); }
 
         class VertexPointerComparator{
             public:
